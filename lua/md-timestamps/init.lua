@@ -10,7 +10,7 @@ local function get_timestamps_file_path()
 	local current_file = vim.api.nvim_buf_get_name(0)
 	local directory = vim.fn.fnamemodify(current_file, ":h")
 	local file_name = vim.fn.fnamemodify(current_file, ":t:r") .. "_timestamps.txt"
-	vim.notify("PATH: " .. directory .. "/" .. file_name)
+	--vim.notify("PATH: " .. directory .. "/" .. file_name)
 	return directory .. "/" .. file_name
 end
 
@@ -27,8 +27,10 @@ function M.append_timestamp()
 	-- Get the timestamp
 	local timestamp = os.date("%Y-%m-%d %H:%M:%S")
 	-- Build the entry to append
-	local entry = string.format("Timestamp: %s, Position: Row %d, Column %d", timestamp, row, col)
-	vim.notify("Entry: " .. entry)
+	-- T: timestamp
+	-- P: Row, Column
+	local entry = string.format("%s,%d,%d", timestamp, row, col)
+	-- vim.notify("Entry: " .. entry)
 	if header_title then
 		entry = entry .. ", Header: " .. header_title
 	end
