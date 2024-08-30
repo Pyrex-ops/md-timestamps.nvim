@@ -32,7 +32,7 @@ function M.append_timestamp()
 	local entry = string.format("%s,%d,%d,", timestamp, row, col)
 	-- vim.notify("Entry: " .. entry)
 	if header_title then
-		entry = entry .. header_title
+		entry = entry .. '"' .. header_title .. '"'
 	end
 
 	-- Append to the timestamp file
